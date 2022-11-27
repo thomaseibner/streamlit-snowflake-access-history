@@ -1,0 +1,7 @@
+CREATE OR REPLACE FUNCTION myns(env varchar)
+ returns varchar
+  as 
+$$
+select ifnull(substr(env, 0, regexp_instr(env, 'PRD|TST|DEV')-2), 'NONE')
+$$
+;

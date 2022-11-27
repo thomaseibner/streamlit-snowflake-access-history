@@ -1,0 +1,7 @@
+CREATE OR REPLACE FUNCTION myenv(env varchar) 
+ returns varchar
+  as 
+$$
+select ifnull(regexp_substr(env, 'PRD|TST|DEV'), 'NONE')
+$$
+;
